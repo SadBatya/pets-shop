@@ -3,18 +3,21 @@
     <div class="wrapper">
           <Navbar></Navbar>
           <Main></Main>
-    </div>
-  </div>
+        </div>
+      </div>
+      <Animals></Animals>
 </template>
 
 
 <script>
+import Animals from "./components/Animals.vue";
 import Navbar from "@/components/NavBar.vue";
 import Main from '@/components/Main.vue'
 export default {
   components: {
     Navbar,
-    Main
+    Main,
+    Animals
   }
 }
 </script>
