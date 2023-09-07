@@ -1,8 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/svn-gilroy');
 
 *{
+  font-family: 'SVN-Gilroy', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;

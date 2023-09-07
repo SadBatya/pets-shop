@@ -37,19 +37,42 @@
       <input type="text" placeholder="Search something here!" />
     </div>
     <my-button title="Join the community"></my-button>
-    <div class="money__valute">
-      <i class="country__icon"></i>
-      <span class="money__text">VND</span>
-      <i class="money__arrow"></i>
+    <div class="money__table" @click="openMenu">
+      <div class="money__valute">
+        <i class="country__icon"></i>
+        <span class="money__text">VND</span>
+        <i class="money__arrow"></i>
+      </div>
+      <div class="money__list list__none">
+        <div class="valute">
+          <img src="./../assets/icons/RUB.png" alt="" />
+          RUB
+        </div>
+        <div class="valute">
+          <img src="./../assets/icons/BYN.png" alt="" />
+          BYN
+        </div>
+        <div class="valute">
+          <img src="./../assets/icons/USA.png" alt="" />
+          USA
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import MyButton from './UI/Button.vue'
+import MyButton from './UI/ButtonBlue.vue';
 export default {
-  components:{
-    MyButton
+  components: {
+    MyButton,
+  },
+  methods:{
+    openMenu(){
+      document.querySelector('.money__list').classList.toggle('list__none')
+      document.querySelector('.money__arrow').classList.toggle('rotate')
+    }
   }
+  
 };
 </script>
 <style scoped>
@@ -58,6 +81,34 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.money__table{
+  position: relative;
+  user-select: none;
+}
+.money__list {
+  position: absolute;
+  top: 45px;
+  left: 8px;
+  background: white;
+  border-radius: 15px;
+  
+}
+.list__none{
+  display: none;
+}
+
+.valute {
+  display: flex;
+  gap: 5px;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.valute img {
+  width: 100%;
+  height: 100%;
 }
 
 .logo img {
@@ -69,27 +120,34 @@ export default {
   flex-direction: row;
   align-items: center;
   gap: 48px;
+  color: var(--primary-color-dark-blue, #003459);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 .nav__input {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 15px;
   align-items: center;
   gap: 12px;
   width: 280px;
   height: 44px;
   border-radius: 52px;
+  background-color: white;
 }
 
 .nav__input input {
   outline: none;
+  width: 200px;
 }
 
 .btn__blue {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 28px;
+  padding-right: 18px;
   padding-left: 28px;
   font-size: 16px;
   color: #fdfdfd;
@@ -98,17 +156,25 @@ export default {
   border-radius: 57px;
 }
 
-.money__valute{
+.money__valute {
   display: flex;
   align-items: center;
   cursor: pointer;
-  
+  padding: 10px;
+  border-radius: 15px;
+  transition: .3s ease;
 }
-.money__text{
+
+.money__valute:hover{
+  cursor: pointer;
+  background-color: #00345919;
+}
+
+.money__text {
   padding-left: 8px;
   padding-right: 4px;
 }
-.country__icon{
+.country__icon {
   content: '';
   display: block;
   background: url(../assets/icons/VDN_Valute.svg);
@@ -116,11 +182,15 @@ export default {
   height: 16px;
 }
 
-.money__arrow{
+.money__arrow {
   display: block;
   content: '';
   background: url(../assets/icons/arrow_down.svg);
   width: 24px;
   height: 24px;
+}
+
+.rotate{
+  transform: rotate(180deg);
 }
 </style>

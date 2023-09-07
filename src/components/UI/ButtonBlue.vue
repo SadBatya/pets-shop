@@ -1,16 +1,16 @@
 <template>
-  <button class="btn__blue">{{ title }}</button>
+  <button>{{ title }}</button>
 </template>
 <script>
 export default {
-  name: 'my-button',
+  name: 'button-blue',
   props: {
     title: String
   }
 }
 </script>
 <style scoped>
-.btn__blue {
+button{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,5 +21,6 @@ export default {
   background-color: #003459;
   height: 44px;
   border-radius: 57px;
+  
 }
 </style>
