@@ -6,13 +6,25 @@
     </div>
     <ButtonArrow title="View more"></ButtonArrow>
   </div>
+  <div class="animal__cards">
+    <Card></Card>
+    <Card></Card>
+    <Card></Card>
+    <Card></Card>
+    <Card></Card>
+    <Card></Card>
+    <Card></Card>
+    <Card></Card>
+  </div>
   
 </template>
 <script>
 import ButtonArrow from './UI/ButtonArrow.vue';
+import Card from './UI/Card.vue'
 export default {
   components:{
-    ButtonArrow
+    ButtonArrow,
+    Card
   }
 };
 </script>
@@ -23,6 +35,16 @@ export default {
   justify-content: space-between;
   align-items: flex-end;
   padding-top: 60px;
+  
+}
+
+.animal__cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 h4 {

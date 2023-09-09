@@ -1,5 +1,17 @@
 <template>
   <div class="header__nav">
+    <div class="burger__menu">
+      <input type="checkbox" id="menu__toggle" />
+      <label class="burger__btn" for="menu__toggle">
+        <span></span>
+      </label>
+      <ul class="burger__list">
+        <li><a class="burger__text" href="">Home</a></li>
+        <li><a class="burger__text" href="">Category</a></li>
+        <li><a class="burger__text" href="">About</a></li>
+        <li><a class="burger__text" href="">Contact</a></li>
+      </ul>
+    </div>
     <div class="logo">
       <img src="./../assets/logo/logo.png" alt="" />
     </div>
@@ -36,7 +48,7 @@
       </i>
       <input type="text" placeholder="Search something here!" />
     </div>
-    <my-button title="Join the community"></my-button>
+    <my-button class="adaptive" title="Join the community"></my-button>
     <div class="money__table" @click="openMenu">
       <div class="money__valute">
         <i class="country__icon"></i>
@@ -66,13 +78,16 @@ export default {
   components: {
     MyButton,
   },
-  methods:{
-    openMenu(){
-      document.querySelector('.money__list').classList.toggle('list__none')
-      document.querySelector('.money__arrow').classList.toggle('rotate')
-    }
-  }
-  
+  methods: {
+    openMenu() {
+      document.querySelector('.money__list').classList.toggle('list__none');
+      document.querySelector('.money__arrow').classList.toggle('rotate');
+    },
+    openBurgerMenu() {
+      document.querySelector('.burger__menu').classList.toggle('active');
+      document.querySelector('.burger__btn').classList.toggle('active');
+    },
+  },
 };
 </script>
 <style scoped>
@@ -83,7 +98,7 @@ export default {
   justify-content: space-between;
 }
 
-.money__table{
+.money__table {
   position: relative;
   user-select: none;
 }
@@ -93,9 +108,8 @@ export default {
   left: 8px;
   background: white;
   border-radius: 15px;
-  
 }
-.list__none{
+.list__none {
   display: none;
 }
 
@@ -162,10 +176,10 @@ export default {
   cursor: pointer;
   padding: 10px;
   border-radius: 15px;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
-.money__valute:hover{
+.money__valute:hover {
   cursor: pointer;
   background-color: #00345919;
 }
@@ -190,7 +204,113 @@ export default {
   height: 24px;
 }
 
-.rotate{
+.rotate {
   transform: rotate(180deg);
+}
+@media(min-width: 850px){
+  .burger__menu{
+    display: none;
+  }
+}
+@media (max-width: 849px) {
+  nav {
+    display: none;
+  }
+  .nav__input {
+    display: none;
+  }
+  .adaptive {
+    display: none;
+  }
+  .money__table {
+    display: none;
+  }
+  .logo {
+    margin: 0 auto;
+  }
+
+  .burger__btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 30px;
+    left: 15px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .burger__btn span,
+  .burger__btn span::before,
+  .burger__btn span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: 0.3;
+  }
+  .burger__btn span::before {
+    content: '';
+    top: -5px;
+    transition: all 0.3s;
+  }
+  .burger__btn span::after {
+    content: '';
+    top: 5px;
+    transition: all 0.3s;
+  }
+
+  #menu__toggle:checked ~ .burger__btn > span {
+    transform: rotate(45deg);
+  }
+  #menu__toggle:checked ~ .burger__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  #menu__toggle:checked ~ .burger__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #menu__toggle {
+    opacity: 0;
+  }
+  .burger__list {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #eceff1;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.25s;
+  }
+
+  .burger__text{
+    display: block;
+    padding: 30px 24px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+  }
+  .burger__text:hover {
+    background-color: #CFD8DC;
+  }
+  #menu__toggle:checked ~ .burger__list{
+    visibility: visible;
+    left: 0;
+  }
+  #menu__toggle:checked ~ .burger__menu{
+    overflow: hidden;
+    background-color: gray;
+  }
 }
 </style>

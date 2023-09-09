@@ -10,5 +10,8 @@ export default createStore({
   actions: {
   },
   modules: {
+    state:() => {
+      
+    }
   }
 })
